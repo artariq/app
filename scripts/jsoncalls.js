@@ -4,6 +4,7 @@ $(document).ready(function() {
 
   var myyear;
   var mymake;
+  var mymodel;
 
   $("#year").change(function() {
     myyear = $('option:selected', this).attr('value');
@@ -23,17 +24,19 @@ $(document).ready(function() {
         alert("no connection");},
       timeout:60000,
       success:function(data){
-        var select= '<select>';
         var option = '';
         $.each(data.result, function(index, value) {
           option += '<option>' + value.model + '</option>';
         });
         console.log("Option: " + option);
-        select = select + option + '</select>';
-        console.log("Select: " + select);
         $('#model').html(option);
       }
     });
+  })
+
+  $("#model").change(function() {
+    myyear = $('option:selected', this).attr('value');
+    console.log('mymodel: '+mymodel);
   })
 
   $('.connect').click(connect);
@@ -47,6 +50,8 @@ $(document).ready(function() {
 
     if (!!mymake) data.manufacturer = mymake;
 
+    if (!!mymodel) data.model = mymodel;
+
     $.ajax({
       url: fqdn + '/fuel/cars',
       type:'GET',
@@ -59,7 +64,7 @@ $(document).ready(function() {
         $("#results").html("");
         console.log("Data: ", data);
         for(var i in data.result){
-          $("#results").append("<li>"+data.result[i].year+data.result[i].manufacturer+"</li>");
+          $("#results").append("<li>"+data.result[i].year+data.result[i].manufacturer+data.result[i].model+"</li>");
         }
       }
     });
