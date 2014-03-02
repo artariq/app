@@ -35,7 +35,7 @@
     <!-- Start of first page: #one -->
     <div data-role="page" id="one">
       <div class="container">
-        <!--<div data-role="header">
+        <div data-role="header">
           <h1>AutoScout</h1>
         </div><!-- /header -->
 
@@ -49,7 +49,7 @@
           <div class="row">
             <div class="col-lg-4">
               <h3 class="text-center">Year:</h3>
-              <select class="form-control" id="year" data-mini="true">
+              <select class="form-control" id="year">
                 <option value="">All</option>
                 <option value="2014">2014</option>
                 <option value="2013">2013</option>
@@ -59,7 +59,7 @@
             </div>
             <div class="col-lg-4">
               <h3 class="text-center">Make:</h3>
-              <select class="form-control" id="make" data-mini="true">
+              <select class="form-control" id="make">
                 <option value="">All</option>
                 <option value="acura">Acura</option>
                 <option value="aston">Aston Martin</option>
@@ -104,95 +104,41 @@
             </div>
             <div class="col-lg-4">
               <h3 class="text-center">Model:</h3>
-              <select class="form-control" id="model" data-mini="true">
+              <select class="form-control" id="model">
                 <option value="all">All</option>
               </select>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-2 col-lg-offset-5">
-              <a href="#two"><img class="img-responsive next" src="images/next.png"></a>
-            </div>
-          </div>
         </div> <!-- main content -->
       </div> <!--container -->
+
+    <div data-role="footer" data-theme="a">
+      <h4>Page Footer</h4>
+    </div><!-- /footer -->
   </div><!-- /page one -->
 
   <!-- Start of second page: #two -->
   <div data-role="page" id="two" data-theme="a">
-    <div class="container">
-      <!--<div data-role="header">
-        <h1>AutoScout</h1>
-      </div><!-- /header -->
 
-      <div role="main" class="ui-content" >
-        <div class="row">
-          <div class="col-lg-6 col-lg-offset-3">
-            <h1 class="text-center">AutoScout</h1>
-            <h3 class="text-center">Enter your driving habits</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-lg-offset-3">
-            <h4 class="text-center"><strong>HIGHWAY</strong></h4>
-            <form>
-              <label for="slider-1" class="text-center">Estimated average km traveled per week</label>
-              <input type="range" name="slider-1" id="slider-1" min="0" max="500" value="50" data-popup-enabled="true">
-              <label for="slider-2" class="text-center">Estimated average speed in km/h</label>
-              <input type="range" name="slider-2" id="slider-2" min="0" max="200" value="30" data-popup-enabled="true">
-              <h4 class="text-center"><strong>CITY-WIDE</strong></h4>
-              <label for="slider-3" class="text-center">Estimated average distance traveled / week</label>
-              <input type="range" name="slider-3" id="slider-3" min="0" max="500" value="50" data-popup-enabled="true">
-              <label for="slider-4" class="text-center">Estimated average speed in km/h</label>
-              <input type="range" name="slider-4" id="slider-4" min="0" max="100" value="30" data-popup-enabled="true">
-            </form>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-2 col-lg-offset-5">
-            <a href="#three"><img class="img-responsive next connect" src="images/next.png"></a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div data-role="header">
+      <h1>Two</h1>
+    </div><!-- /header -->
 
-    <!--<center><a href="#three"><button type="button" class="connect btn btn-success">NEXT</button></a></center>-->
+    <div role="main" class="ui-content">
+      <h2>Two</h2>
+      <p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
+      <p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>
+      <p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to page "one"</a></p>
 
+    </div><!-- /content -->
+
+    <div data-role="footer">
+      <h4>Page Footer</h4>
+    </div><!-- /footer -->
   </div><!-- /page two -->
 
-  <!-- Start of third page: #three -->
-  <div data-role="page" id="three" data-theme="a">
-    <div class="container">
-      <!--<div data-role="header">
-        <h1>AutoScout</h1>
-      </div><!-- /header -->
 
-      <div role="main" class="ui-content" >
-        <div class="row">
-          <div class="col-lg-6 col-lg-offset-3">
-            <h1 class="text-center">AutoScout</h1>
-            <h3 class="text-center">Results</h3>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-8 col-lg-offset-2">
-            <div class="results">
-            </div>
-
-            <ul id="results"></ul>
-          </div>
-        </div>
-      </div>
-
-      <p class="text-center"><a href="#two"><img src="images/repeat.png" class="img-responsive next inblock"></a>
-      <a href="#one"><img src="images/home.png" class="img-responsive next inblock"></a></p>
-
-      
-    </div>
-  </div>
-
-
-  <!--    <div class="row">
+      <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
           <center><button type="button" class="connect btn btn-success">NEXT</button></center>
           
@@ -202,7 +148,7 @@
           <ul id="results"></ul>
         </div>
       </div>
-    </div> -->
+    </div>
 
 <!--      <script>
         $.getJSON('http://young-stream-4848.herokuapp.com/fuel/all', function(data) {

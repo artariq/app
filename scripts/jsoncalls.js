@@ -1,3 +1,9 @@
+$( document ).bind( "mobileinit", function() {
+    // Make your jQuery Mobile framework configuration changes here!
+
+    $.mobile.allowCrossDomainPages = true;
+});
+
 $(document).ready(function() {
   
   var fqdn = 'http://young-stream-4848.herokuapp.com';
@@ -65,7 +71,10 @@ $(document).ready(function() {
         $("#results").html("");
         console.log("Data: ", data);
         for(var i in data.result){
-          $("#results").append("<li>"+data.result[i].year+data.result[i].manufacturer+data.result[i].model+"</li>");
+          $("#results").append("<li><h3>"+data.result[i].manufacturer+" "+data.result[i].model+" "+data.result[i].year+"</h3></li>");
+          $("#results").append("<h4 class='spend'>Fuel Spend: </h4>");
+          $("#results").append("<h4 class='spend'>CO2 Emissions: </h4>");
+          $("#results").append("<hr>");
         }
       }
     });

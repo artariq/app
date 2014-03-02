@@ -5,7 +5,39 @@ html, body{
 	font-family: 'Open Sans', serif;
 }
 
-h1 {
-	font-family: 'Holtwood One SC', serif;
-	font-size: 5em;
+.ui-page { 
+	background: #FFCC00;
 }
+
+.ui-header {
+	background: #CC3300;
+}
+
+.next {
+	width: 4.5em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+}
+
+.inblock {
+	display: inline-block;
+	width: 4.5em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+}
+
+h1, h2, h4.spend {
+	font-family: 'Holtwood One SC', serif;
+/*	font-size: 5em; */
+}
+
+#results li {
+	list-style-type: none;
+
+}
+
+button.connect {
+	margin-top: 20px;
+} 
