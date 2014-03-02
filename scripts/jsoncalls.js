@@ -1,8 +1,11 @@
+var fqdn = 'http://young-stream-4848.herokuapp.com';
+
 function connect(e)
 {
-  var term= {button:e};
+  var term = {button:e};
+  
   $.ajax({
-  url:'http://young-stream-4848.herokuapp.com/fuel/all',
+  url:fqdn+'/fuel/all',
   type:'GET',
   data:term,
   dataType:'json',

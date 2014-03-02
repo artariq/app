@@ -11,6 +11,11 @@
 
     <script src="scripts/jsoncalls.js"></script>
 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="scripts/bootstrap.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,23 +28,41 @@
 
       <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
-          <h1>AutoScout</h1>
-          <center><b>Find info</b></center>
-          <center><input id="callall" type="button" value="all" /></center>
+          <h1 class="text-center">AutoScout</h1>
+          <h3 class="text-center">Search for a car with any (or all) of the below</h3>
+          <div class="col-xs-4">
+            Year: <select class="form-control">
+              <option>All</option>
+              <option>2014</option>
+              <option>2013</option>
+              <option>2012</option>
+              <option>2011</option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            Make: <select class="form-control">
+              <option>All</option>
+              <option>Acura</option>
+              <option>Astin Martin</option>
+              <option>Audi</option>
+              <option>Bentley</option>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            Model: <select class="form-control">
+              <option>A4</option>
+              <option>Quatro</option>
+              <option>A4 Quatro</option>
+            </select>
+          </div>
+          <br><br>
           <center><input onclick="connect(this.value)" type="button" value="model" /></center>
           <center><b>Results</b></center>
           <ul id="results"></ul>
 
-          <div id="placeholder"></div>
-
         </div>
       </div>
     </div>
-
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="scripts/bootstrap.min.js"></script>
 
 <!--      <script>
         $.getJSON('http://young-stream-4848.herokuapp.com/fuel/all', function(data) {
