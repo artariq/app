@@ -1,24 +1,50 @@
-var fqdn = 'http://young-stream-4848.herokuapp.com';
-
-function connect(e)
-{
-  var term = {button:e};
+$(document).ready(function() {
   
-  $.ajax({
-  url:fqdn+'/fuel/all',
-  type:'GET',
-  data:term,
-  dataType:'json',
-  error:function(jqXHR,text_status,strError){
-    alert("no connection");},
-    timeout:60000,
-    success:function(data){
-      $("#results").html("");
-      for(var i in data.result){
-        $("#results").append("<li>"+data.result[i].year+"</li>");
+  var fqdn = 'http://young-stream-4848.herokuapp.com';
+
+  var myyear;
+
+  $("#year").change(function() {
+    myyear = $('option:selected', this).attr('value');
+    console.log('myyear: '+myyear);
+    connect();
+  })
+
+  $('.connect').click(connect);
+  
+  function connect(e)
+  {
+  
+    var data = {};
+    if (!!myyear) data.year = myyear;
+
+    $.ajax({
+      url: fqdn + '/fuel/cars',
+      type:'GET',
+      data: data,
+      dataType:'json',
+      error:function(jqXHR,text_status,strError){
+        alert("no connection");},
+      timeout:60000,
+      success:function(data){
+        $("#results").html("");
+        console.log("Data: ", data);
+        for(var i in data.result){
+          $("#results").append("<li>"+data.result[i].year+"</li>");
+        }
       }
-    }
-});}
+    });
+  }
+
+
+
+
+
+});
+
+
+
+
 
 /*$function ()
 {
