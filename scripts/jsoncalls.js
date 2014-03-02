@@ -1,6 +1,7 @@
 $(document).ready(function() {
   
   var fqdn = 'http://young-stream-4848.herokuapp.com';
+  /*var fqdn = "http://api.getautoscout.com";*/
 
   var myyear;
   var mymake;
