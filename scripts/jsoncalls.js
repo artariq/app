@@ -4,6 +4,10 @@ $( document ).bind( "mobileinit", function() {
     $.mobile.allowCrossDomainPages = true;
 });
 
+  $('#slider-1').on('slidestop', function(e, ui) {
+      console.log("slider has stopped.");
+  });
+
 $(document).ready(function() {
   
   var fqdn = 'http://young-stream-4848.herokuapp.com';
@@ -12,6 +16,13 @@ $(document).ready(function() {
   var myyear;
   var mymake;
   var mymodel;
+
+  var workd;
+  var shopd;
+  var leisured;
+
+  var mydistance;
+  var myspeed;
 
   $("#year").change(function() {
     myyear = $('option:selected', this).attr('value');
@@ -46,8 +57,29 @@ $(document).ready(function() {
     console.log('mymodel: '+mymodel);
   })
 
+  /*$( "#slider-1").on('slidestop', function( event ) {
+    var slider_value=$("#slider-1").slider().val();
+    alert('Value: '+slider_value);
+  });*/
+
+console.log("Befor slider");
+
+  /*$('#slider-1').on('slidestop', function(e, ui) {
+      console.log("slider has stopped.");
+  });*/
+
+  /*$( "#slider-1").change(function( event ) {
+    console.log("Inside slider");
+    var slider_value=$("#slider-1").slider().val();
+    alert('Value: '+slider_value);
+  });*/
+
   $('.connect').click(connect);
   
+  function calculate(highway, city) {
+/*    var fuel_cons = (highway / 100) * mydistance;  */
+  }
+
   function connect(e)
   {
   
@@ -71,6 +103,7 @@ $(document).ready(function() {
         $("#results").html("");
         console.log("Data: ", data);
         for(var i in data.result){
+          calculate(data.result[i].fuel_cons.highway.metric, data.result[i].fuel_cons.city.metric);
           $("#results").append("<li><h3>"+data.result[i].manufacturer+" "+data.result[i].model+" "+data.result[i].year+"</h3></li>");
           $("#results").append("<h4 class='spend'>Fuel Spend: </h4>");
           $("#results").append("<h4 class='spend'>CO2 Emissions: </h4>");
@@ -79,27 +112,4 @@ $(document).ready(function() {
       }
     });
   }
-
-
-
-
-
 });
-
-
-
-
-
-/*$function ()
-{
-  $('#callall').on('click', $.getJSON('http://young-stream-4848.herokuapp.com/fuel/all', function(data) {
-        var output="<ul>";
-        for (var i in data.result) {
-            output+="<li>" + data.result[i].manufacturer + " " + data.result[i].year + "--" + data.result[i].model+"</li>";
-        }
-
-        output+="</ul>";
-        document.getElementById("placeholder").innerHTML=output;
-  });)
-}
-*/

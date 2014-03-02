@@ -132,20 +132,29 @@
             <h3 class="text-center">Enter your driving habits</h3>
           </div>
         </div>
+        <form>
+          <div class="row">
+          <br>
+          <p class="text-center">Enter the approximate distance in, km, you would be traveling per week for:</p>
+          <br>
+            <div class="col-lg-6 col-lg-offset-3">
+              <label for="slider-1" class="text-center">Work/School: </label>
+              <input type="range" name="slider-1" id="slider-1" min="0" max="500" value="50">
+            </div>
+            <div class="col-lg-6 col-lg-offset-3">
+              <label for="slider-2" class="text-center">Groceries/Shopping: </label>
+              <input type="range" name="slider-2" id="slider-2" min="0" max="200" value="30">
+            </div> 
+            <div class="col-lg-6 col-lg-offset-3">
+              <label for="slider-3" class="text-center">Leisure: </label>
+              <input type="range" name="slider-3" id="slider-3" min="0" max="200" value="30">
+            </div>
+          </div>
+        </form>
         <div class="row">
-          <div class="col-lg-6 col-lg-offset-3">
-            <h4 class="text-center"><strong>HIGHWAY</strong></h4>
-            <form>
-              <label for="slider-1" class="text-center">Estimated average km traveled per week</label>
-              <input type="range" name="slider-1" id="slider-1" min="0" max="500" value="50" data-popup-enabled="true">
-              <label for="slider-2" class="text-center">Estimated average speed in km/h</label>
-              <input type="range" name="slider-2" id="slider-2" min="0" max="200" value="30" data-popup-enabled="true">
-              <h4 class="text-center"><strong>CITY-WIDE</strong></h4>
-              <label for="slider-3" class="text-center">Estimated average distance traveled / week</label>
-              <input type="range" name="slider-3" id="slider-3" min="0" max="500" value="50" data-popup-enabled="true">
-              <label for="slider-4" class="text-center">Estimated average speed in km/h</label>
-              <input type="range" name="slider-4" id="slider-4" min="0" max="100" value="30" data-popup-enabled="true">
-            </form>
+          <div class="col-lg-2 col-lg-offset-5">
+            <div id="tally">
+            </div>
           </div>
         </div>
         <div class="row">
@@ -190,31 +199,6 @@
       
     </div>
   </div>
-
-
-  <!--    <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-          <center><button type="button" class="connect btn btn-success">NEXT</button></center>
-          
-          <div class="results">
-          </div>
-
-          <ul id="results"></ul>
-        </div>
-      </div>
-    </div> -->
-
-<!--      <script>
-        $.getJSON('http://young-stream-4848.herokuapp.com/fuel/all', function(data) {
-        var output="<ul>";
-        for (var i in data.result) {
-            output+="<li>" + data.result[i].manufacturer + " " + data.result[i].year + "--" + data.result[i].model+"</li>";
-        }
-
-        output+="</ul>";
-        document.getElementById("placeholder").innerHTML=output;
-  });
-      </script> -->
 
   </body>
 </html>
