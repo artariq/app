@@ -1,8 +1,13 @@
-/*@import url(http://fonts.googleapis.com/css?family=Holtwood+One+SC|Open+Sans:400,700);*/
+/*l@import url(http://fonts.googleapis.com/css?family=Holtwood+One+SC|Open+Sans:400,700);*/
+
+@font-face {
+font-family: 'Oxygen';
+src: url('Oxygen-Regular.ttf');
+}
 
 html, body{
 	margin: 0;
-	font-family: 'Open Sans', serif;
+	/*font-family: 'Helvetica_Light', serif;*/
 }
 
 .ui-page { 
@@ -31,6 +36,14 @@ html, body{
 h1, h2, h4.spend {
 	font-family: 'Holtwood One SC', serif;
 /*	font-size: 5em; */
+}
+
+p#total {
+	font-size: 1.5em;
+}
+
+#totaldist {
+	font-size: 3em;
 }
 
 #results li {

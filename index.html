@@ -6,17 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AutoScout</title>
 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="scripts/jquery-1.10.1.min.js"></script>
+
     <!-- jquery mobile -->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    <link rel="stylesheet" href="styles/jquery.mobile-1.4.2.min.css" />
+<!--<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> -->
+    <script src="scripts/jquery.mobile-1.4.2.min.js"></script>
 
     <!-- Bootstrap -->
     <link href="styles/bootstrap.min.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="styles/jquery.nouislider.min.css" rel="stylesheet">
+
+    <script src="scripts/jquery.nouislider.min.js"></script>    
 
     <script src="scripts/jsoncalls.js"></script>
 
@@ -139,27 +143,29 @@
           <br>
             <div class="col-lg-6 col-lg-offset-3">
               <label for="slider-1" class="text-center">Work/School: </label>
-              <input type="range" name="slider-1" id="slider-1" min="0" max="500" value="50">
+              <div class="slider1"></div>
+              <span id="work"></span>
             </div>
             <div class="col-lg-6 col-lg-offset-3">
               <label for="slider-2" class="text-center">Groceries/Shopping: </label>
-              <input type="range" name="slider-2" id="slider-2" min="0" max="200" value="30">
+              <div class="slider2"></div>
+              <span id="shopping"></span>
             </div> 
             <div class="col-lg-6 col-lg-offset-3">
               <label for="slider-3" class="text-center">Leisure: </label>
-              <input type="range" name="slider-3" id="slider-3" min="0" max="200" value="30">
+              <div class="slider3"></div>
+              <span id="leisure"></span>
             </div>
           </div>
         </form>
         <div class="row">
           <div class="col-lg-2 col-lg-offset-5">
-            <div id="tally">
-            </div>
+            <p id="total" class="text-center">Total distance: </p><span id="totaldist" class="text-center"></span>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-2 col-lg-offset-5">
-            <a href="#three"><img class="img-responsive next connect" src="images/next.png"></a>
+            <a href="#three"><img class="img-responsive next" src="images/next.png"></a>
           </div>
         </div>
       </div>
@@ -169,8 +175,45 @@
 
   </div><!-- /page two -->
 
-  <!-- Start of third page: #three -->
+    <!-- Start of third page: #three -->
   <div data-role="page" id="three" data-theme="a">
+    <div class="container">
+      <div role="main" class="ui-content" >
+        <div class="row">
+          <div class="col-lg-6 col-lg-offset-3">
+            <h1 class="text-center">AutoScout</h1>
+            <h3 class="text-center">Driving Habits</h3>
+          </div>
+        </div>
+        <form>
+          <div class="row">
+          <br>
+            <div class="col-lg-6 col-lg-offset-3">
+              <h3 class="text-center">Select the Highway vs City breakdown that best represents your driving pattern: </h3>
+              <select class="form-control" id="driving" data-mini="true">
+                <option value="0">Highway 0% vs City 100%</option>
+                <option value="25">Highway 25% vs City 75%</option>
+                <option value="50">Highway 50% vs City 50%</option>
+                <option value="75">Highway 75% vs City 25%</option>
+                <option value="100">Highway 100% vs City 0%</option>
+              </select>
+              <h4 class="text-center">Highway driving is considered to approximately cover 16km in 12min, stops included</h4>
+              <h4 class="text-center">City driving is considered to approximately cover 18km in 30min, stops included</h4>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-5 col-lg-offset-5">
+        <br><br><br><br><br>
+        <a href="#two"><img src="images/back.png" class="img-responsive next inblock"></a>
+        <a href="#four"><img src="images/next.png" class="img-responsive next inblock connect"></a>
+        <a href="#one"><img src="images/home.png" class="img-responsive next inblock"></a>
+      </div>
+    </div>
+  </div> <!-- end page three -->
+
+  <!-- Start of four page: #four -->
+  <div data-role="page" id="four" data-theme="a">
     <div class="container">
       <!--<div data-role="header">
         <h1>AutoScout</h1>
@@ -187,16 +230,13 @@
           <div class="col-lg-8 col-lg-offset-2">
             <div class="results">
             </div>
-
             <ul id="results"></ul>
           </div>
         </div>
       </div>
 
-      <p class="text-center"><a href="#two"><img src="images/repeat.png" class="img-responsive next inblock"></a>
+      <p class="text-center"><a href="#three"><img src="images/back.png" class="img-responsive next inblock"></a>
       <a href="#one"><img src="images/home.png" class="img-responsive next inblock"></a></p>
-
-      
     </div>
   </div>
 

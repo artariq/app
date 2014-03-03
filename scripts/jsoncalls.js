@@ -4,8 +4,18 @@ $( document ).bind( "mobileinit", function() {
     $.mobile.allowCrossDomainPages = true;
 });
 
-  $('#slider-1').on('slidestop', function(e, ui) {
-      console.log("slider has stopped.");
+$(function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 500,
+      values: [ 75, 300 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
   });
 
 $(document).ready(function() {
@@ -21,7 +31,7 @@ $(document).ready(function() {
   var shopd;
   var leisured;
 
-  var mydistance;
+  var mydistance = '100';
   var myspeed;
 
   $("#year").change(function() {
@@ -57,32 +67,71 @@ $(document).ready(function() {
     console.log('mymodel: '+mymodel);
   })
 
-  /*$( "#slider-1").on('slidestop', function( event ) {
-    var slider_value=$("#slider-1").slider().val();
-    alert('Value: '+slider_value);
-  });*/
+  console.log("Before slider");
 
-console.log("Befor slider");
+  var work = $('.slider1');
+  var shopping = $('.slider2');
+  var leisure = $('.slider3');
 
-  /*$('#slider-1').on('slidestop', function(e, ui) {
-      console.log("slider has stopped.");
-  });*/
+  // Run noUiSlider
+  $(work).noUiSlider({
+    range: [30, 200]
+    ,start: 40
+    ,step: 5
+    ,handles: 1
+    ,set: getComputeWork.bind(work, 'work')
+    ,serialization: {
+    to: [ $("#work"), 'html' ]
+    }
+  });
 
-  /*$( "#slider-1").change(function( event ) {
-    console.log("Inside slider");
-    var slider_value=$("#slider-1").slider().val();
-    alert('Value: '+slider_value);
-  });*/
+  // Run noUiSlider
+  $(shopping).noUiSlider({
+    range: [20, 100]
+    ,start: 30
+    ,step: 5
+    ,handles: 1
+    ,set: getComputeShopping.bind(shopping, 'shopping')
+    ,serialization: {
+    to: [ $("#shopping"), 'html' ]
+    }
+  });
+
+  // Run noUiSlider
+  $(leisure).noUiSlider({
+    range: [20, 100]
+    ,start: 30
+    ,step: 5
+    ,handles: 1
+    ,set: getComputeLeisure.bind(leisure, 'leisure')
+    ,serialization: {
+    to: [ $("#leisure"), 'html' ]
+    }
+  });
+
+  mydistance = parseInt($('.slider1').val()) + parseInt($('.slider2').val()) + parseInt($('.slider3').val());
+  $('#totaldist').text(mydistance + " km");
+  
+
+  function getComputeWork(name) {
+    mydistance = parseInt($('.slider1').val()) + parseInt($('.slider2').val()) + parseInt($('.slider3').val());
+    $('#totaldist').text(mydistance + " km");
+  }
+
+  function getComputeShopping(name) {
+    mydistance = parseInt($('.slider1').val()) + parseInt($('.slider2').val()) + parseInt($('.slider3').val());
+    $('#totaldist').text(mydistance + " km");
+  }
+
+  function getComputeLeisure(name) {
+    mydistance = parseInt($('.slider1').val()) + parseInt($('.slider2').val()) + parseInt($('.slider3').val());
+    $('#totaldist').text(mydistance + " km");
+  }
 
   $('.connect').click(connect);
   
-  function calculate(highway, city) {
-/*    var fuel_cons = (highway / 100) * mydistance;  */
-  }
-
   function connect(e)
   {
-  
     var data = {};
 
     if (!!myyear) data.year = myyear;
@@ -103,13 +152,26 @@ console.log("Befor slider");
         $("#results").html("");
         console.log("Data: ", data);
         for(var i in data.result){
-          calculate(data.result[i].fuel_cons.highway.metric, data.result[i].fuel_cons.city.metric);
+          var fuelspent = calculate(data.result[i].fuel_cons.highway.metric, data.result[i].fuel_cons.city.metric);
           $("#results").append("<li><h3>"+data.result[i].manufacturer+" "+data.result[i].model+" "+data.result[i].year+"</h3></li>");
-          $("#results").append("<h4 class='spend'>Fuel Spend: </h4>");
-          $("#results").append("<h4 class='spend'>CO2 Emissions: </h4>");
+          $("#results").append("<h4 class='spend'>Fuel Spend: "+ fuelspent + " Litres/Week </h4>");
+          $("#results").append("<h4 class='spend'>Fuel Cost: "+ (fuelspent * 1.37).toFixed(2) + " $/Week </h4>");
+          $("#results").append("<h4 class='spend'>Annual CO2 Emissions: " + data.result[i].co2_emissions+" KG/year </h4>");
+          $("#results").append("<h4 class='spend'>Transmission: " + data.result[i].transmission+" </h4>");
           $("#results").append("<hr>");
         }
       }
     });
   }
+
+  function calculate(highway, city) {
+    var mileage = mydistance;
+    var hgRatio = $('#driving option:selected').attr('value');
+    var ctRatio = 100 - hgRatio;
+    var hgFuel = (mileage/100) * (hgRatio/100) * highway;
+    var ctFuel = (mileage/100) * (ctRatio/100) * city;
+    var totFuel = hgFuel + ctFuel;
+    return totFuel.toFixed(2);
+  }
+
 });
